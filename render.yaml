@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: savorly
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: flask --app run db upgrade && gunicorn run:app
+    healthCheckPath: /health
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: savorly-db
+          property: connectionString
+      - key: SECRET_KEY
+        generateValue: true
+      - key: SESSION_COOKIE_SECURE
+        value: "true"
+      - key: MEALDB_API_KEY
+        value: "1"
+databases:
+  - name: savorly-db
+    plan: free

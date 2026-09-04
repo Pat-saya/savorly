@@ -1,0 +1,9 @@
+{% extends 'base.html' %}{% block title %}Create account — Savorly{% endblock %}
+{% block content %}<section class="narrow"><p class="eyebrow">Get started</p><h1>Create your account</h1>
+<form method="post" class="panel stack">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+  <label>Username<input name="username" minlength="3" maxlength="40" value="{{ request.form.username or '' }}" required autocomplete="username"></label>
+  <label>Email<input name="email" type="email" value="{{ request.form.email or '' }}" required autocomplete="email"></label>
+  <label>Password <small>At least 8 characters</small><input name="password" type="password" minlength="8" required autocomplete="new-password"></label>
+  <button class="button" type="submit">Create account</button>
+</form><p>Already have an account? <a href="{{ url_for('auth.login') }}">Log in</a>.</p></section>{% endblock %}

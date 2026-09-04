@@ -1,0 +1,5 @@
+{% extends 'base.html' %}{% block title %}Browse recipes — Savorly{% endblock %}
+{% block content %}<section class="page-head"><p class="eyebrow">Browse recipes</p><h1>Find something worth savoring.</h1><p class="lede">Start with a category and explore recipes sourced directly from TheMealDB.</p></section>
+{% if error %}<div class="empty danger"><h2>Browsing is temporarily unavailable</h2><p>{{ error }}</p></div>{% else %}
+<section class="browse-section"><div class="section-heading"><p class="eyebrow">By category</p><h2>What sounds good?</h2></div><div class="browse-grid">{% for category in categories %}<a class="browse-card" href="{{ url_for('main.search', category=category) }}"><span>Category</span><strong>{{ category }}</strong><b>Browse recipes →</b></a>{% endfor %}</div></section>
+{% endif %}{% endblock %}

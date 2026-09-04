@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}Savorly — Find dinner. Plan simply.{% endblock %}
+{% block content %}
+<section class="hero">
+  <div>
+    <p class="eyebrow">Your recipes, finally organized</p>
+    <h1>Find dinner.<br><em>Plan simply.</em></h1>
+    <p class="lede">Discover recipes from around the world, keep the ones you love, and turn inspiration into a practical meal plan.</p>
+    <form class="search-bar" action="{{ url_for('main.search') }}" method="get">
+      <label class="sr-only" for="home-query">Search recipes</label>
+      <input id="home-query" name="q" placeholder="Try chicken, curry, pasta…" required>
+      <button class="button" type="submit">Find recipes</button>
+    </form>
+  </div>
+  <div class="hero-card" aria-hidden="true"><span>Tonight’s idea</span><strong>Something delicious is waiting.</strong><div>Explore • Save • Plan</div></div>
+</section>
+<section class="cuisine-banner"><div><p class="eyebrow">Need some inspiration?</p><h2>Not sure what to cook?</h2><p>Explore recipes from around the world and find something that sounds good tonight.</p></div><a class="button" href="{{ url_for('main.browse') }}">Browse recipes →</a></section>
+<section class="browse-cta"><p class="eyebrow">Savorly makes it simple</p><h2>From inspiration to dinner.</h2></section>
+<section class="feature-row">
+  <article><b>01</b><h2>Discover</h2><p>Search approachable recipes with ingredients and clear instructions.</p></article>
+  <article><b>02</b><h2>Organize</h2><p>Save favorites, add private notes, and group recipes into collections.</p></article>
+  <article><b>03</b><h2>Plan</h2><p>Put saved recipes on a simple, dated meal plan.</p></article>
+</section>
+{% endblock %}
